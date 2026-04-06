@@ -23,12 +23,11 @@ export function FinalCTA() {
       {/* Footer */}
       <div className="max-w-6xl mx-auto mt-24 pt-8 border-t border-primary-foreground/20">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded bg-primary-foreground flex items-center justify-center">
-              <span className="text-primary font-bold text-xs">W</span>
-            </div>
-            <span className="text-primary-foreground font-medium">Wanore</span>
-          </div>
+          <img 
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2-YPmZTrJroyiWO06wpOldxe3S2KBZty.png" 
+            alt="Wanore" 
+            className="h-6 w-auto"
+          />
           <p className="text-sm text-primary-foreground/60">
             &copy; {new Date().getFullYear()} Wanore. All rights reserved.
           </p>

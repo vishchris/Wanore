@@ -7,8 +7,8 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Wanore - Understand your team in 30 seconds',
-  description: 'Turn messy meetings into clear, structured snapshots your team can act on.',
+  title: 'Wanore - No more unclear meetings',
+  description: 'Turn messy meetings into clear next steps for your whole team',
   generator: 'v0.app',
   icons: {
     icon: [

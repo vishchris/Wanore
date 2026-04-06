@@ -4,23 +4,23 @@ export function Solution() {
   const steps = [
     {
       icon: ClipboardPaste,
-      title: "Paste notes or transcript",
-      description: "Drop in your meeting notes, Zoom transcript, or Slack thread."
+      title: "Auto-transcription",
+      description: "Audio files automatically transcribed from your online meeting."
     },
     {
       icon: Sparkles,
-      title: "AI generates snapshot",
-      description: "Get a structured view of what's happening, done, blocked, and next."
+      title: "Snapshot generated",
+      description: "Get a view of what's happening, done, blocked, and next."
     },
     {
       icon: Target,
       title: "Tasks become missions",
-      description: "Action items turn into trackable mission cards for your team."
+      description: "Action items turn into mission cards for your team."
     },
     {
       icon: TrendingUp,
       title: "Progress auto-tracked",
-      description: "Watch your team's momentum in real-time without asking for updates."
+      description: "Watch your team's momentum without asking for updates."
     }
   ]
 

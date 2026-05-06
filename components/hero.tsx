@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { UpdateCard } from "@/components/update-card"
-import { MissionCard } from "@/components/mission-card"
 
 export function Hero() {
   return (
@@ -22,21 +21,7 @@ export function Hero() {
           </div>
           
           <div className="relative">
-            <div className="space-y-4">
-              <UpdateCard />
-              <div className="grid grid-cols-2 gap-3">
-                <MissionCard 
-                  title="Finalize Q2 roadmap" 
-                  assignee="Sarah" 
-                  status="in-progress" 
-                />
-                <MissionCard 
-                  title="Review API docs" 
-                  assignee="Mike" 
-                  status="done" 
-                />
-              </div>
-            </div>
+            <UpdateCard />
           </div>
         </div>
       </div>

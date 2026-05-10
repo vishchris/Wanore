@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
-import { CheckCircle2, Clock, AlertTriangle, ArrowRight, Plus, Check, FileText } from "lucide-react"
+import { Check, AlertTriangle, ArrowRight, Plus, FileText, Play, Volume2 } from "lucide-react"
 
 interface Task {
   id: string
@@ -16,9 +16,9 @@ interface Task {
 export function ProductPreview() {
   const [confirmed, setConfirmed] = useState(false)
   const [tasks, setTasks] = useState<Task[]>([
-    { id: "1", text: "Launch beta to internal users by Friday", owner: "Sarah", completed: false },
-    { id: "2", text: "Schedule design review with stakeholders", owner: "Mike", completed: false },
-    { id: "3", text: "Prepare feedback collection form", owner: "Unassigned", completed: true },
+    { id: "1", text: "Contact Indian connections about candidates and companies willing to send employees", owner: "Sarah", completed: false },
+    { id: "2", text: "Research visa options for skilled foreigners", owner: "Mike", completed: false },
+    { id: "3", text: "Start preparing cultural training courses", owner: "Unassigned", completed: false },
   ])
   const [newTaskText, setNewTaskText] = useState("")
 
@@ -44,7 +44,7 @@ export function ProductPreview() {
 
   return (
     <section className="py-24 px-6 bg-muted/30">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Your meeting, turned into action
@@ -54,48 +54,93 @@ export function ProductPreview() {
           </p>
         </div>
         
-        {/* Snapshot Card */}
-        <Card className="border-2 border-primary/20 bg-card shadow-lg">
-          <CardHeader className="flex flex-row items-center justify-between pb-4">
-            <div>
-              <CardTitle className="text-xl font-semibold text-card-foreground">
-                Product Team Standup
-              </CardTitle>
-              <p className="text-sm text-muted-foreground mt-1">Tuesday, April 8</p>
+        {/* App Preview Container */}
+        <div className="flex rounded-xl overflow-hidden border border-border shadow-xl bg-card">
+          {/* Sidebar */}
+          <div className="w-72 bg-primary text-primary-foreground p-4 hidden lg:block">
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold">Wanore</h3>
+              <p className="text-xs text-primary-foreground/60">Snapshots</p>
             </div>
-            <Button 
-              variant={confirmed ? "default" : "outline"}
-              size="sm"
-              onClick={() => setConfirmed(!confirmed)}
-              className={confirmed ? "bg-accent text-accent-foreground hover:bg-accent/90" : ""}
-            >
-              {confirmed ? (
-                <>
-                  <Check className="w-4 h-4 mr-1" />
-                  Confirmed
-                </>
-              ) : (
-                "Confirm"
-              )}
-            </Button>
-          </CardHeader>
-          
-          <CardContent className="space-y-8">
-            {/* What's Next - Primary Section */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <ArrowRight className="w-5 h-5 text-primary" />
-                <h3 className="text-lg font-semibold text-card-foreground">What&apos;s Next</h3>
+            
+            <div className="mb-6">
+              <p className="text-xs text-primary-foreground/60 uppercase tracking-wide mb-2">New Snapshot</p>
+              <div className="flex gap-2">
+                <input 
+                  type="text" 
+                  placeholder="Meeting name" 
+                  className="flex-1 text-xs px-2 py-1.5 rounded bg-primary-foreground/10 border-0 text-primary-foreground placeholder:text-primary-foreground/40"
+                  disabled
+                />
+                <Button size="sm" variant="secondary" className="text-xs h-7">Create</Button>
               </div>
-              
-              <div className="bg-primary/5 rounded-lg p-4 space-y-3">
+            </div>
+            
+            <div className="space-y-1">
+              <p className="text-xs text-primary-foreground/60 uppercase tracking-wide mb-2">Owned</p>
+              <div className="p-2 rounded bg-primary-foreground/10 cursor-pointer">
+                <p className="text-sm font-medium">Product Team Standup</p>
+                <p className="text-xs text-primary-foreground/60">4/8/2026, 9:00 AM</p>
+              </div>
+              <div className="p-2 rounded hover:bg-primary-foreground/5 cursor-pointer">
+                <p className="text-sm">Design Review</p>
+                <p className="text-xs text-primary-foreground/60">4/7/2026, 2:30 PM</p>
+              </div>
+              <div className="p-2 rounded hover:bg-primary-foreground/5 cursor-pointer">
+                <p className="text-sm">Sprint Planning</p>
+                <p className="text-xs text-primary-foreground/60">4/5/2026, 10:00 AM</p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Main Content */}
+          <div className="flex-1 p-6 bg-muted/20">
+            {/* Snapshot Header */}
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold text-card-foreground">Product Team Standup</h2>
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
+                  <input 
+                    type="text" 
+                    placeholder="email" 
+                    className="text-sm px-3 py-1.5 rounded border border-border bg-card w-40"
+                    disabled
+                  />
+                  <Button size="sm" variant="outline" className="text-sm">Share</Button>
+                </div>
+                <Button 
+                  size="sm"
+                  onClick={() => setConfirmed(!confirmed)}
+                  className={confirmed ? "bg-accent text-accent-foreground hover:bg-accent/90" : "bg-primary text-primary-foreground"}
+                >
+                  {confirmed ? (
+                    <>
+                      <Check className="w-4 h-4 mr-1" />
+                      Confirmed
+                    </>
+                  ) : (
+                    "Confirm"
+                  )}
+                </Button>
+              </div>
+            </div>
+            
+            {/* What's Next - Primary Section */}
+            <Card className="border-2 border-accent/30 bg-card shadow-sm mb-6">
+              <CardHeader className="pb-2">
+                <div className="flex items-center gap-2">
+                  <ArrowRight className="w-5 h-5 text-accent" />
+                  <CardTitle className="text-lg font-semibold uppercase tracking-wide">What&apos;s Next</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-3">
                 {tasks.length === 0 ? (
                   <p className="text-muted-foreground text-sm py-2">No clear next steps: add one</p>
                 ) : (
                   tasks.map((task) => (
                     <div 
                       key={task.id} 
-                      className={`flex items-start gap-3 p-3 rounded-md bg-card border border-border ${task.completed ? "opacity-60" : ""}`}
+                      className={`flex items-start gap-3 p-3 rounded-md bg-muted/30 ${task.completed ? "opacity-60" : ""}`}
                     >
                       <Checkbox 
                         checked={task.completed}
@@ -125,7 +170,7 @@ export function ProductPreview() {
                     onChange={(e) => setNewTaskText(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && addTask()}
                     placeholder="Add a task..."
-                    className="flex-1 text-sm px-3 py-2 rounded-md bg-card border border-border text-card-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-accent"
+                    className="flex-1 text-sm px-3 py-2 rounded-md bg-muted/50 border border-border text-card-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-accent"
                   />
                   <Button 
                     size="sm" 
@@ -136,62 +181,105 @@ export function ProductPreview() {
                     <Plus className="w-4 h-4" />
                   </Button>
                 </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
             
-            {/* Secondary Sections Grid */}
-            <div className="grid md:grid-cols-3 gap-4">
+            {/* Secondary Sections - 3 Column Grid */}
+            <div className="grid md:grid-cols-3 gap-4 mb-6">
               {/* What's Going On */}
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm font-medium text-card-foreground">
-                  <Clock className="w-4 h-4 text-accent" />
-                  What&apos;s going on
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Mobile app redesign in progress. Waiting on design review from Sarah.
-                </p>
-              </div>
+              <Card className="border border-border bg-card">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                    What&apos;s Going On
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="text-sm text-card-foreground space-y-2">
+                  <p className="flex items-start gap-2">
+                    <span className="text-muted-foreground">•</span>
+                    Mobile app redesign in progress, waiting on design review
+                  </p>
+                  <p className="flex items-start gap-2">
+                    <span className="text-muted-foreground">•</span>
+                    Backend deployment preparation underway
+                  </p>
+                </CardContent>
+              </Card>
               
               {/* What's Done */}
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm font-medium text-card-foreground">
-                  <CheckCircle2 className="w-4 h-4 text-accent" />
-                  What&apos;s done
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  API integration complete. User testing scheduled for next week.
-                </p>
-              </div>
+              <Card className="border border-border bg-card">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                    What&apos;s Done
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="text-sm text-card-foreground space-y-2">
+                  <p className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                    API integration complete and tested
+                  </p>
+                  <p className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                    User testing scheduled for next week
+                  </p>
+                </CardContent>
+              </Card>
               
               {/* What's Blocked */}
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm font-medium text-card-foreground">
-                  <AlertTriangle className="w-4 h-4 text-destructive" />
-                  What&apos;s blocked
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Backend deployment waiting on security review approval.
-                </p>
-              </div>
+              <Card className="border border-border bg-card">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wide">
+                    What&apos;s Blocked
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="text-sm text-card-foreground space-y-2">
+                  <p className="flex items-start gap-2">
+                    <AlertTriangle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                    Security review still pending approval
+                  </p>
+                  <p className="flex items-start gap-2">
+                    <AlertTriangle className="w-4 h-4 text-red-500 shrink-0 mt-0.5" />
+                    Legal sign-off needed for new terms
+                  </p>
+                </CardContent>
+              </Card>
             </div>
             
-            {/* Transcription */}
-            <div className="pt-4 border-t border-border">
-              <details className="group">
-                <summary className="flex items-center gap-2 text-sm font-medium text-muted-foreground cursor-pointer hover:text-card-foreground">
-                  <FileText className="w-4 h-4" />
-                  View full transcription
-                </summary>
-                <div className="mt-3 p-4 rounded-md bg-muted/50 text-sm text-muted-foreground leading-relaxed max-h-48 overflow-y-auto">
-                  <p className="mb-2"><strong>Sarah:</strong> Alright, quick update on the mobile app. We&apos;re about 70% through the redesign. Main blocker is I need feedback on the new navigation flow.</p>
-                  <p className="mb-2"><strong>Mike:</strong> I can review that today. Also, the API integration is done. We&apos;re ready for testing whenever.</p>
-                  <p className="mb-2"><strong>Alex:</strong> Backend deployment is still stuck. Security team hasn&apos;t approved the new auth changes yet.</p>
-                  <p><strong>Sarah:</strong> Okay, let&apos;s aim to launch beta internally by Friday. I&apos;ll send out a feedback form once we&apos;re live.</p>
+            {/* Audio Recording */}
+            <Card className="border border-border bg-card mb-4">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium text-card-foreground">Audio Recording</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-primary">
+                  <button className="w-8 h-8 rounded-full bg-primary-foreground/20 flex items-center justify-center hover:bg-primary-foreground/30 transition-colors">
+                    <Play className="w-4 h-4 text-primary-foreground fill-primary-foreground" />
+                  </button>
+                  <div className="flex-1 h-1 bg-primary-foreground/20 rounded-full">
+                    <div className="w-1/4 h-full bg-primary-foreground/60 rounded-full" />
+                  </div>
+                  <span className="text-xs text-primary-foreground/60">12:34</span>
+                  <Volume2 className="w-4 h-4 text-primary-foreground/60" />
                 </div>
-              </details>
-            </div>
-          </CardContent>
-        </Card>
+              </CardContent>
+            </Card>
+            
+            {/* Transcription */}
+            <Card className="border border-border bg-card">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium text-card-foreground flex items-center gap-2">
+                  <FileText className="w-4 h-4" />
+                  Transcript
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-sm text-muted-foreground leading-relaxed max-h-32 overflow-y-auto">
+                  <p><strong>Sarah:</strong> Alright, quick update on the mobile app. We&apos;re about 70% through the redesign. Main blocker is I need feedback on the new navigation flow.</p>
+                  <p className="mt-2"><strong>Mike:</strong> I can review that today. Also, the API integration is done. We&apos;re ready for testing whenever.</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       </div>
     </section>
   )

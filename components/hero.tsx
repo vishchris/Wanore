@@ -14,9 +14,11 @@ export function Hero() {
             <p className="text-lg md:text-xl text-muted-foreground max-w-lg">
               Turn messy meetings and updates into clear, structured snapshots your team can act on.
             </p>
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2">
-              Generate your first snapshot
-              <ArrowRight className="w-4 h-4" />
+            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2" asChild>
+              <a href="https://wanore.vercel.app">
+                Generate your first snapshot
+                <ArrowRight className="w-4 h-4" />
+              </a>
             </Button>
           </div>
           

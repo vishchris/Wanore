@@ -9,8 +9,8 @@ export function Navbar() {
           alt="Wanore" 
           className="h-8 w-auto"
         />
-        <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
-          Get Started
+        <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90" asChild>
+          <a href="https://wanore.vercel.app">Get Started</a>
         </Button>
       </div>
     </header>

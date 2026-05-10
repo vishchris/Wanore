@@ -14,9 +14,12 @@ export function FinalCTA() {
         <Button 
           size="lg" 
           className="bg-accent text-accent-foreground hover:bg-accent/90 gap-2"
+          asChild
         >
-          Generate your first snapshot
-          <ArrowRight className="w-4 h-4" />
+          <a href="https://wanore.vercel.app">
+            Generate your first snapshot
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </Button>
       </div>
       
